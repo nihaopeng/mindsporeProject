@@ -9,7 +9,7 @@ from mindspore.dataset.vision import transforms
 from mindspore.dataset import transforms
 from mindspore.nn import optim
 
-from net import myAgg
+from net import myVgg
 
 
 train_dataset=Cifar10Dataset("./data/cifar-10-binary/cifar-10-batches-bin",shuffle=True,usage="train")
@@ -37,7 +37,7 @@ test_dataset=datapipe(test_dataset,16)
 
 mindspore.set_context(device_target="GPU")
 
-module=myAgg()
+module=myVgg()
 
 loss_fn=nn.SoftmaxCrossEntropyWithLogits(sparse=True,reduction="mean")
 

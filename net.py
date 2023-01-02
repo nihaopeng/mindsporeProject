@@ -3,7 +3,7 @@ import mindspore.numpy
 from mindspore.nn import Cell
 
 
-class myAgg(nn.Cell):
+class myVgg(nn.Cell):
     def __init__(self):
         super(myAgg,self).__init__()
         self.c1=nn.SequentialCell([
@@ -69,6 +69,6 @@ class myAgg(nn.Cell):
 
 if __name__=="__main__":
     x=mindspore.numpy.rand([1,3,32,32])
-    module=myAgg()
+    module=myVgg()
     y=module(x)
     print(y)

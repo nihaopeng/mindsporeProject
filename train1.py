@@ -8,7 +8,7 @@ from mindspore.dataset import transforms
 from mindspore import dtype as mstype, nn, ops
 from mindspore.nn import optim
 
-from net2 import Net
+from net1 import myAgg
 
 train_dataset=Cifar10Dataset("./data/cifar-10-binary/cifar-10-batches-bin",shuffle=True,usage="train")
 test_dataset=Cifar10Dataset("./data/cifar-10-binary/cifar-10-batches-bin",shuffle=True,usage="test")
@@ -33,13 +33,13 @@ test_dataset=datapipe(test_dataset,16)
 
 mindspore.set_context(device_target="GPU")
 
-module=Net()
+module=myAgg()
 
 loss_fn=nn.SoftmaxCrossEntropyWithLogits(sparse=True,reduction="mean")
 
-optimizer=optim.SGD(module.trainable_params(),learning_rate=0.001,momentum=0.9)
+optimizer=optim.SGD(module.trainable_params(),learning_rate=0.01,momentum=0.9)
 
-epoch=100
+epoch=20
 
 
 def train(train_set,loss_fn,optimizer,module):
@@ -91,15 +91,15 @@ def test(test_set,module):
 
 def draw(tra,val,title):
     plt.figure (dpi = 100, figsize = (10, 6))
-    plt.plot (tra, c = 'red', linestyle = '-', label = title+'_tra')
-    plt.plot (val, c = 'blue', linestyle = ':', label = title+'loss_val')
+    plt.plot (tra, c = 'red', linestyle = '-', label = '{}_tra'.format(title))
+    plt.plot (val, c = 'blue', linestyle = ':', label = '{}_val'.format(title))
     plt.xlabel ('epoch')
     plt.ylabel ('loss')
     plt.title (title)
     plt.legend ()
     if not os.path.exists ("comparePic"):
         os.mkdir ("comparePic")
-    plt.savefig ('comparePic/alexnet_loss.png')
+    plt.savefig ('comparePic/alexnet_{}.png'.format(title))
     plt.show ()
 
 
@@ -114,10 +114,11 @@ for i in range(epoch):
     print("-------------------\nepoch{}".format(i+1))
     acc_train,loss_train=train(train_dataset,loss_fn,optimizer,module)
     acc_test,loss_test=test(test_dataset,module)
-    loss_tra.append(loss_train)
-    acc_tra.append(acc_train)
-    loss_val.append(loss_test)
-    acc_val.append(acc_test)
+    #print(float(loss_test))
+    loss_tra.append(float(loss_train))
+    acc_tra.append(float(acc_train))
+    loss_val.append(float(loss_test))
+    acc_val.append(float(acc_test))
     if acc_test>max_acc:
         max_acc=acc_test
         if not os.path.exists("save_modules"):
@@ -128,5 +129,7 @@ for i in range(epoch):
 time_end=time.clock()
 
 print("use_time={}".format(time_end-time_start))
+print(loss_tra)
+print(loss_val)
 draw(loss_tra,loss_val,'loss')
 draw(acc_tra,acc_val,'acc')
