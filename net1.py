@@ -3,9 +3,9 @@ import mindspore.numpy
 from mindspore.nn import Cell
 
 
-class myAgg (nn.Cell):
+class AlexNet (nn.Cell):
     def __init__(self):
-        super (myAgg, self).__init__ ()
+        super (AlexNet, self).__init__ ()
         self.relu=nn.ReLU()
         self.c1 = nn.Conv2d (3, 48, 11, 4, padding = 0, pad_mode = "pad")
         # self.c2=nn.Conv2d(96,256,5,2,padding=0,pad_mode="pad")/
@@ -49,6 +49,6 @@ class myAgg (nn.Cell):
 
 if __name__ == "__main__":
     x = mindspore.numpy.rand ([1, 3, 227, 227])
-    module = myAgg ()
+    module = AlexNet ()
     y = module (x)
     print (y)

@@ -5,7 +5,7 @@ from mindspore.nn import Cell
 
 class myVgg(nn.Cell):
     def __init__(self):
-        super(myAgg,self).__init__()
+        super(myVgg,self).__init__()
         self.c1=nn.SequentialCell([
             nn.Conv2d(3,64,3,1,padding=1,pad_mode='pad'),
             nn.BatchNorm2d(64,affine=True),
