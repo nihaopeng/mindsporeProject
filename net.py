@@ -62,7 +62,9 @@ class myAgg(nn.Cell):
         x=self.c3(x)
         x=self.c4(x)
         x=self.c5(x)
+        print(x.shape)
         x=self.classifier(x)
+
         return x
 
 if __name__=="__main__":

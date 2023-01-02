@@ -3,247 +3,187 @@
 # 3.Refer to https://www.mindspore.cn/search?inputValue=analyze_fail.dat to get more instructions.
 # ===============================================================================
 
-# [No.1] after_grad.23
-# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:526/                    def after_grad(*args):/
-funcgraph fg_23(
-        %para1 : Tensor(F32)[16, 3, 32, 32]    # args0
-        , %para2 : Tensor(I32)[16]    # args1
-        , %para3 : Ref[Tensor(F32)][64, 3, 3, 3]    # c1.0.weight
-        , %para4 : Ref[Tensor(F32)][64]    # c1.1.gamma
-        , %para5 : Ref[Tensor(F32)][64]    # c1.1.beta
-        , %para6 : Ref[Tensor(F32)][128, 64, 3, 3]    # c2.0.weight
-        , %para7 : Ref[Tensor(F32)][128]    # c2.1.gamma
-        , %para8 : Ref[Tensor(F32)][128]    # c2.1.beta
-        , %para9 : Ref[Tensor(F32)][256, 128, 3, 3]    # c3.0.weight
-        , %para10 : Ref[Tensor(F32)][256]    # c3.1.gamma
-        , %para11 : Ref[Tensor(F32)][256]    # c3.1.beta
-        , %para12 : Ref[Tensor(F32)][256, 256, 3, 3]    # c3.3.weight
-        , %para13 : Ref[Tensor(F32)][256]    # c3.4.gamma
-        , %para14 : Ref[Tensor(F32)][256]    # c3.4.beta
-        , %para15 : Ref[Tensor(F32)][512, 256, 3, 3]    # c4.0.weight
-        , %para16 : Ref[Tensor(F32)][512]    # c4.1.gamma
-        , %para17 : Ref[Tensor(F32)][512]    # c4.1.beta
-        , %para18 : Ref[Tensor(F32)][512, 512, 3, 3]    # c4.3.weight
-        , %para19 : Ref[Tensor(F32)][512]    # c4.4.gamma
-        , %para20 : Ref[Tensor(F32)][512]    # c4.4.beta
-        , %para21 : Ref[Tensor(F32)][512, 512, 3, 3]    # c5.0.weight
-        , %para22 : Ref[Tensor(F32)][512]    # c5.1.gamma
-        , %para23 : Ref[Tensor(F32)][512]    # c5.1.beta
-        , %para24 : Ref[Tensor(F32)][512, 512, 3, 3]    # c5.3.weight
-        , %para25 : Ref[Tensor(F32)][512]    # c5.4.gamma
-        , %para26 : Ref[Tensor(F32)][512]    # c5.4.beta
-        , %para27 : Ref[Tensor(F32)][64, 512]    # classifier.1.weight
-        , %para28 : Ref[Tensor(F32)][64]    # classifier.1.bias
-        , %para29 : Ref[Tensor(F32)][64, 64]    # classifier.4.weight
-        , %para30 : Ref[Tensor(F32)][64]    # classifier.4.bias
-        , %para31 : Ref[Tensor(F32)][10, 64]    # classifier.7.weight
-        , %para32 : Ref[Tensor(F32)][10]    # classifier.7.bias
-        , %para33 : Ref[Tensor(F32)][512]    # c5.1.moving_mean
-        , %para34 : Ref[Tensor(F32)][512]    # c5.1.moving_variance
-        , %para35 : Ref[Tensor(F32)][512]    # c5.4.moving_mean
-        , %para36 : Ref[Tensor(F32)][512]    # c5.4.moving_variance
-        , %para37 : Ref[Tensor(F32)][512]    # c4.1.moving_mean
-        , %para38 : Ref[Tensor(F32)][512]    # c4.1.moving_variance
-        , %para39 : Ref[Tensor(F32)][512]    # c4.4.moving_mean
-        , %para40 : Ref[Tensor(F32)][512]    # c4.4.moving_variance
-        , %para41 : Ref[Tensor(F32)][256]    # c3.1.moving_mean
-        , %para42 : Ref[Tensor(F32)][256]    # c3.1.moving_variance
-        , %para43 : Ref[Tensor(F32)][256]    # c3.4.moving_mean
-        , %para44 : Ref[Tensor(F32)][256]    # c3.4.moving_variance
-        , %para45 : Ref[Tensor(F32)][128]    # c2.1.moving_mean
-        , %para46 : Ref[Tensor(F32)][128]    # c2.1.moving_variance
-        , %para47 : Ref[Tensor(F32)][64]    # c1.1.moving_mean
-        , %para48 : Ref[Tensor(F32)][64]    # c1.1.moving_variance
+# [No.1] Default_wrapper.1
+# In file /home/pyt/PycharmProjects/pythonProject/net2.py:23/    def construct(self, x):/
+funcgraph fg_1(
+        %para1 : Tensor(F32)[16, 3, 227, 227]    # x
+        , %para2 : Ref[Tensor(F32)][10]    # fc3.bias
+        , %para3 : Ref[Tensor(F32)][10, 84]    # fc3.weight
+        , %para4 : Ref[Tensor(F32)][84]    # fc2.bias
+        , %para5 : Ref[Tensor(F32)][84, 120]    # fc2.weight
+        , %para6 : Ref[Tensor(F32)][120]    # fc1.bias
+        , %para7 : Ref[Tensor(F32)][120, 400]    # fc1.weight
+        , %para8 : Ref[Tensor(F32)][16, 6, 5, 5]    # conv2.weight
+        , %para9 : Ref[Tensor(F32)][6, 3, 5, 5]    # conv1.weight
     ) {
-    %1 : Tuple[Tensor(F32),Tensor(I32)]TupleShape((16, 3, 32, 32), (16)) = Primitive::MakeTuple{prim_type=1}(%para1, %para2)    #(Tensor(F32)[16, 3, 32, 32], Tensor(I32)[16]) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:526/                    def after_grad(*args):/#[CNode]31
-    %2 : FuncNoShape = UnpackGraphPrimitive::UnpackGraph{prim_type=1}(FuncGraph::fg_16, %1)    #(FuncNoShape, Tuple[Tensor(F32),Tensor(I32)]TupleShape((16, 3, 32, 32), (16)))    # fg_16=forward_fn.16 #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %3 : Tuple[Ref[Tensor(F32)]*30]TupleShape((64, 3, 3, 3), (64), (64), (128, 64, 3, 3), (128), (128), (256, 128, 3, 3), (256), (256), (256, 256, 3, 3), (256), (256), (512, 256, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (64, 512), (64), (64, 64), (64), (10, 64), (10)) = Primitive::MakeTuple{prim_type=1}(%para3, %para4, %para5, %para6, %para7, %para8, %para9, %para10, %para11, %para12, %para13, %para14, %para15, %para16, %para17, %para18, %para19, %para20, %para21, %para22, %para23, %para24, %para25, %para26, %para27, %para28, %para29, %para30, %para31, %para32)    #(Ref[Tensor(F32)][64, 3, 3, 3], Ref[Tensor(F32)][64], Ref[Tensor(F32)][64], Ref[Tensor(F32)][128, 64, 3, 3], Ref[Tensor(F32)][128], Ref[Tensor(F32)][128], Ref[Tensor(F32)][256, 128, 3, 3], Ref[Tensor(F32)][256], Ref[Tensor(F32)][256], Ref[Tensor(F32)][256, 256, 3, 3], Ref[Tensor(F32)][256], Ref[Tensor(F32)][256], Ref[Tensor(F32)][512, 256, 3, 3], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512, 512, 3, 3], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512, 512, 3, 3], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512, 512, 3, 3], Ref[Tensor(F32)][512], Ref[Tensor(F32)][512], Ref[Tensor(F32)][64, 512], Ref[Tensor(F32)][64], Ref[Tensor(F32)][64, 64], Ref[Tensor(F32)][64], Ref[Tensor(F32)][10, 64], Ref[Tensor(F32)][10]) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#[CNode]33
-    %4 : FuncNoShape = DoSignaturePrimitive::S-Prim-grad{prim_type=1}(%2, %3)    #(FuncNoShape, Tuple[Ref[Tensor(F32)]*30]TupleShape((64, 3, 3, 3), (64), (64), (128, 64, 3, 3), (128), (128), (256, 128, 3, 3), (256), (256), (256, 256, 3, 3), (256), (256), (512, 256, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (64, 512), (64), (64, 64), (64), (10, 64), (10))) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
 
 #------------------------> 0
-    %5 = UnpackCall::unpack_call(%4, %1)    #(FuncNoShape, Tuple[Tensor(F32),Tensor(I32)]TupleShape((16, 3, 32, 32), (16))) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    Primitive::Return{prim_type=1}(%5)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#[CNode]34
+    %1 = FuncGraph::fg_6(%para1)    #(Tensor(F32)[16, 3, 227, 227])    # fg_6=Default.6 #scope: Default
+#[CNode]11
+    Primitive::Return{prim_type=1}(%1)    #(Undefined) #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:43/        return x/#[CNode]12
 }
 # order:
-#   1: @after_grad.23:32{[0]: ValueNode<UnpackGraphPrimitive> UnpackGraph, [1]: ValueNode<FuncGraph> forward_fn.16, [2]: [CNode]31}
-#   2: @after_grad.23:32{[0]: ValueNode<DoSignaturePrimitive> S-Prim-grad, [1]: 32, [2]: [CNode]33}
-#   3: @after_grad.23:32{[0]: ValueNode<UnpackCall> unpack_call.35, [1]: 32, [2]: [CNode]31}
-#   4: @after_grad.23:[CNode]34{[0]: ValueNode<Primitive> Return, [1]: 32}
+#   1: @Default_wrapper.1:[CNode]11{[0]: ValueNode<FuncGraph> Default.6, [1]: x}
+#   2: @Default_wrapper.1:[CNode]12{[0]: ValueNode<Primitive> Return, [1]: [CNode]11}
 
 
-# [No.2] UnpackCall.24
-
-funcgraph fg_24(
-        %para49 : FuncNoShape    # 25
-        , %para50 : Tuple[Tensor(F32),Tensor(I32)]TupleShape((16, 3, 32, 32), (16))    # 26
+# [No.2] Default.6
+# In file /home/pyt/PycharmProjects/pythonProject/net2.py:23/    def construct(self, x):/
+funcgraph fg_6[fg_1](
+        %para10 : Tensor(F32)[16, 3, 227, 227]    # x
     ) {
-    %1 : Tensor(F32)[16, 3, 32, 32] = Primitive::TupleGetItem{prim_type=1}(%para50, I64(0))    #(Tuple[Tensor(F32),Tensor(I32)]TupleShape((16, 3, 32, 32), (16)), I64NoShape) #scope: Default
-#36
-    %2 : Tensor(I32)[16] = Primitive::TupleGetItem{prim_type=1}(%para50, I64(1))    #(Tuple[Tensor(F32),Tensor(I32)]TupleShape((16, 3, 32, 32), (16)), I64NoShape) #scope: Default
-#37
+    %1 : Tensor(F32)[16, 6, 223, 223] = FuncGraph::fg_13(%para10)    #(Tensor(F32)[16, 3, 227, 227])    # fg_13=Conv2d.13 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:28/        x = self.pool (self.relu (self.conv1 (x)))/#[CNode]14
+    %2 : Tensor(F32)[16, 6, 223, 223] = FuncGraph::fg_15(%1)    #(Tensor(F32)[16, 6, 223, 223])    # fg_15=ReLU.15 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:28/        x = self.pool (self.relu (self.conv1 (x)))/#[CNode]16
+    %3 : Tensor(F32)[16, 6, 111, 111] = FuncGraph::fg_17(%2)    #(Tensor(F32)[16, 6, 223, 223])    # fg_17=MaxPool2d.17 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:28/        x = self.pool (self.relu (self.conv1 (x)))/#x
+    %4 : Tensor(F32)[16, 16, 107, 107] = FuncGraph::fg_18(%3)    #(Tensor(F32)[16, 6, 111, 111])    # fg_18=Conv2d.18 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:33/        x = self.pool (self.relu (self.conv2 (x)))/#[CNode]19
+    %5 : Tensor(F32)[16, 16, 107, 107] = FuncGraph::fg_15(%4)    #(Tensor(F32)[16, 16, 107, 107])    # fg_15=ReLU.15 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:33/        x = self.pool (self.relu (self.conv2 (x)))/#[CNode]20
+    %6 : Tensor(F32)[16, 16, 53, 53] = FuncGraph::fg_17(%5)    #(Tensor(F32)[16, 16, 107, 107])    # fg_17=MaxPool2d.17 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:33/        x = self.pool (self.relu (self.conv2 (x)))/#x
+    %7 : Tensor(F32)[16, 44944] = FuncGraph::fg_21(%6)    #(Tensor(F32)[16, 16, 53, 53])    # fg_21=Flatten.21 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:35/        x=self.flatten(x)/#x
 
 #------------------------> 1
-    %3 = %para49(%1, %2)    #(Tensor(F32)[16, 3, 32, 32], Tensor(I32)[16]) #scope: Default
-#38
-    Primitive::Return{prim_type=1}(%3)    #(Undefined) #scope: Default
-#39
+    %8 = FuncGraph::fg_7(%7)    #(Tensor(F32)[16, 44944])    # fg_7=Dense.7 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:37/        x = self.relu (self.fc1 (x))/#[CNode]22
+    %9 = FuncGraph::fg_15(%8)    #(Undefined)    # fg_15=ReLU.15 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:37/        x = self.relu (self.fc1 (x))/#x
+    %10 = FuncGraph::fg_23(%9)    #(Undefined)    # fg_23=Dense.23 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:39/        x = self.relu (self.fc2 (x))/#[CNode]24
+    %11 = FuncGraph::fg_15(%10)    #(Undefined)    # fg_15=ReLU.15 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:39/        x = self.relu (self.fc2 (x))/#x
+    %12 = FuncGraph::fg_25(%11)    #(Undefined)    # fg_25=Dense.25 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:42/        x = self.fc3 (x)/#x
+    Primitive::Return{prim_type=1}(%12)    #(Undefined) #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:43/        return x/#[CNode]26
 }
 # order:
-#   1: @UnpackCall.24:38{[0]: 25, [1]: 36, [2]: 37}
-#   2: @UnpackCall.24:39{[0]: ValueNode<Primitive> Return, [1]: 38}
+#   1: @Default.6:[CNode]14{[0]: ValueNode<FuncGraph> Conv2d.13, [1]: x}
+#   2: @Default.6:[CNode]16{[0]: ValueNode<FuncGraph> ReLU.15, [1]: [CNode]14}
+#   3: @Default.6:x{[0]: ValueNode<FuncGraph> MaxPool2d.17, [1]: [CNode]16}
+#   4: @Default.6:[CNode]19{[0]: ValueNode<FuncGraph> Conv2d.18, [1]: x}
+#   5: @Default.6:[CNode]20{[0]: ValueNode<FuncGraph> ReLU.15, [1]: [CNode]19}
+#   6: @Default.6:x{[0]: ValueNode<FuncGraph> MaxPool2d.17, [1]: [CNode]20}
+#   7: @Default.6:x{[0]: ValueNode<FuncGraph> Flatten.21, [1]: x}
+#   8: @Default.6:[CNode]22{[0]: ValueNode<FuncGraph> Dense.7, [1]: x}
+#   9: @Default.6:x{[0]: ValueNode<FuncGraph> ReLU.15, [1]: [CNode]22}
+#  10: @Default.6:[CNode]24{[0]: ValueNode<FuncGraph> Dense.23, [1]: x}
+#  11: @Default.6:x{[0]: ValueNode<FuncGraph> ReLU.15, [1]: [CNode]24}
+#  12: @Default.6:x{[0]: ValueNode<FuncGraph> Dense.25, [1]: x}
+#  13: @Default.6:[CNode]26{[0]: ValueNode<Primitive> Return, [1]: x}
 
 
-# [No.3] forward_fn.27
-# In file /home/pyt/PycharmProjects/pythonProject/train.py:51/    def forward_fn(image,label):/
-funcgraph fg_27[fg_40](
-        %para51 : Tensor(F32)[16, 3, 32, 32]    # forward_fn
-        , %para52 : Tensor(I32)[16]    # forward_fn
+# [No.3] Dense.7
+# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:463/    def construct(self, x):/
+funcgraph fg_7[fg_1](
+        %para11 : Tensor(F32)[16, 44944]    # x
     ) {
-    %1 : $(forward_fn.40):FuncNoShape = Primitive::J{prim_type=1}[side_effect_propagate=I64(1)](%para-1)    #(FuncNoShape) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
 
 #------------------------> 2
-    %2 = %1(%para51, %para52)    #(Tensor(F32)[16, 3, 32, 32], Tensor(I32)[16]) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %3 = Primitive::TupleGetItem{prim_type=1}(%2, I64(0))    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %4 = Primitive::TupleGetItem{prim_type=1}(%2, I64(1))    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %5 = HyperMapPy::hyper_map[ones_like_leaf]{fn_leaf=MultitypeFuncGraph::ones_like_leaf{(CSRTensor), (COOTensor), (Tensor), (Func), (Number), (TypeType)}}(%3)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %6 = %4(%5)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %7 = Primitive::TupleGetItem{prim_type=1}(%6, I64(0))    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %8 = Primitive::Partial{prim_type=1}[side_effect_propagate=I64(1)](MultitypeFuncGraph::env_get{(EnvType, Tensor)}, %7)    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %9 = HyperMap::hyper_map(%8, %para-1)    #(Undefined, Tuple[Ref[Tensor(F32)]*30]TupleShape((64, 3, 3, 3), (64), (64), (128, 64, 3, 3), (128), (128), (256, 128, 3, 3), (256), (256), (256, 256, 3, 3), (256), (256), (512, 256, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (512, 512, 3, 3), (512), (512), (64, 512), (64), (64, 64), (64), (10, 64), (10))) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    %10 = Primitive::MakeTuple{prim_type=1}(%3, %9)    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
-    Primitive::Return{prim_type=1}(%10)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#32
+    %1 = FuncGraph::fg_8(%para11, %para6, %para7)    #(Tensor(F32)[16, 44944], Ref[Tensor(F32)][120], Ref[Tensor(F32)][120, 400])    # fg_8=L-Dense.8 #scope: Default
+#[CNode]27
+    Primitive::Return{prim_type=1}(%1)    #(Undefined) #scope: Default/fc1-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#[CNode]28
 }
 # order:
-#   1: @forward_fn.27:32{[0]: 32, [1]: forward_fn, [2]: forward_fn}
-#   2: @forward_fn.27:32{[0]: ValueNode<Primitive> TupleGetItem, [1]: 32, [2]: ValueNode<Int64Imm> 0}
-#   3: @forward_fn.27:32{[0]: ValueNode<Primitive> TupleGetItem, [1]: 32, [2]: ValueNode<Int64Imm> 1}
-#   4: @forward_fn.27:32{[0]: ValueNode<HyperMapPy> hyper_map[ones_like_leaf].41, [1]: 32}
-#   5: @forward_fn.27:32{[0]: 32, [1]: 32}
-#   6: @forward_fn.27:32{[0]: ValueNode<Primitive> TupleGetItem, [1]: 32, [2]: ValueNode<Int64Imm> 0}
-#   7: @forward_fn.27:32{[0]: ValueNode<Primitive> Partial, [1]: ValueNode<MultitypeFuncGraph> env_get.42, [2]: 32}
-#   8: @forward_fn.27:32{[0]: ValueNode<HyperMap> hyper_map.43, [1]: 32, [2]: 44}
-#   9: @forward_fn.27:32{[0]: ValueNode<Primitive> MakeTuple, [1]: 32, [2]: 32}
-#  10: @forward_fn.27:32{[0]: ValueNode<Primitive> Return, [1]: 32}
+#   1: @Dense.7:[CNode]27{[0]: ValueNode<FuncGraph> L-Dense.8, [1]: x, [2]: fc1.bias, [3]: fc1.weight}
+#   2: @Dense.7:[CNode]28{[0]: ValueNode<Primitive> Return, [1]: [CNode]27}
 
 
-# [No.4] forward_fn.16
-# In file /home/pyt/PycharmProjects/pythonProject/train.py:51/    def forward_fn(image,label):/
-funcgraph fg_16[fg_23](
-        %para53 : Tensor(F32)[16, 3, 32, 32]    # image
-        , %para54 : Tensor(I32)[16]    # label
+# [No.4] L-Dense.8
+# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:463/    def construct(self, x):/
+funcgraph fg_8(
+        %para12 : Tensor(F32)[16, 44944]    # x
+        , %para13 : Ref[Tensor(F32)][120]    # L-fc3.bias
+        , %para14 : Ref[Tensor(F32)][120, 400]    # L-fc3.weight
     ) {
-    %1 : Tensor(F32)[16, 10] = FuncGraph::fg_45(%para53)    #(Tensor(F32)[16, 3, 32, 32])    # fg_45=Default.45 #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:52/        output=module(image)/#output
+    %1 : Tuple[I64*2]TupleShape(NoShape, NoShape) = DoSignaturePrimitive::S-Prim-Shape{prim_type=1}(%para12)    #(Tensor(F32)[16, 44944]) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:473/        if len(x_shape) != 2:/#фx_shape
+    %2 : NoneTypeNoShape = DoSignaturePrimitive::S-Prim-check_dense_input_shape{prim_type=1}(%1, "Dense")    #(Tuple[I64*2]TupleShape(NoShape, NoShape), StringNoShape) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:465/        check_dense_input_shape(x_shape, self.cls_name)/#29
+    %3 : NoneTypeNoShape = Primitive::stop_gradient{prim_type=1}(%2)    #(NoneTypeNoShape) #scope: Default/fc3-Dense
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:42/        x = self.fc3 (x)/#30
+    %4 : I64NoShape = FuncGraph::fg_31(%1)    #(Tuple[I64*2]TupleShape(NoShape, NoShape))    # fg_31=L-ms_len.31 #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#32
+    %5 : BoolNoShape = DoSignaturePrimitive::S-Prim-not_equal{prim_type=1}(%4, I64(2))    #(I64NoShape, I64NoShape) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#33
+    %6 : BoolNoShape = FuncGraph::fg_34(%5)    #(BoolNoShape)    # fg_34=L-bool_.34 #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#35
+    %7 : FuncNoShape = Primitive::Switch{prim_type=1}(%6, FuncGraph::fg_36, FuncGraph::fg_37)    #(BoolNoShape, FuncNoShape, FuncNoShape)    # fg_36=L-✓Dense.36, fg_37=L-✗Dense.37 #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#38
+    %8 : Tensor(F32)[16, 44944] = %7() #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#39
 
 #------------------------> 3
-    %2 = FuncGraph::fg_28(%1, %para54)    #(Tensor(F32)[16, 10], Tensor(I32)[16])    # fg_28=Default.28 #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:53/        loss=loss_fn(output,label)/#loss
-    %3 = DoSignaturePrimitive::S-Prim-MakeTuple{prim_type=1}(%2, %1)    #(Undefined, Tensor(F32)[16, 10]) #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:54/        return loss,output/#[CNode]46
-    %4 = GradAux::aux_fn(%3, Bool(1))    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/ops/composite/base.py:527/                        return grad_(fn, weights)(*args)/#[CNode]47
-    Primitive::Return{prim_type=1}(%4)    #(Undefined) #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:54/        return loss,output/#[CNode]48
+    %9 = FuncGraph::fg_9(%8)    #(Tensor(F32)[16, 44944])    # fg_9=L-↓Dense.9 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:42/        x = self.fc3 (x)/#40
+    %10 = Primitive::Depend{prim_type=1}[side_effect_propagate=I64(1)](%9, %3)    #(Undefined, NoneTypeNoShape) #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:42/        x = self.fc3 (x)/#41
+    Primitive::Return{prim_type=1}(%10)    #(Undefined) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/#[CNode]42
 }
 # order:
-#   1: @forward_fn.16:output{[0]: ValueNode<FuncGraph> Default.45, [1]: image}
-#   2: @forward_fn.16:loss{[0]: ValueNode<FuncGraph> Default.28, [1]: output, [2]: label}
-#   3: @forward_fn.16:[CNode]46{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MakeTuple, [1]: loss, [2]: output}
-#   4: @forward_fn.16:[CNode]48{[0]: ValueNode<Primitive> Return, [1]: [CNode]47}
-#   5: @forward_fn.16:[CNode]47{[0]: ValueNode<GradAux> aux_fn.49, [1]: [CNode]46, [2]: ValueNode<BoolImm> true}
+#   1: @L-Dense.8:фx_shape{[0]: ValueNode<DoSignaturePrimitive> S-Prim-Shape, [1]: x}
+#   2: @L-Dense.8:29{[0]: ValueNode<DoSignaturePrimitive> S-Prim-check_dense_input_shape, [1]: фx_shape, [2]: ValueNode<StringImm> Dense}
+#   3: @L-Dense.8:32{[0]: ValueNode<FuncGraph> L-ms_len.31, [1]: фx_shape}
+#   4: @L-Dense.8:33{[0]: ValueNode<DoSignaturePrimitive> S-Prim-not_equal, [1]: 32, [2]: ValueNode<Int64Imm> 2}
+#   5: @L-Dense.8:35{[0]: ValueNode<FuncGraph> L-bool_.34, [1]: 33}
+#   6: @L-Dense.8:38{[0]: ValueNode<Primitive> Switch, [1]: 35, [2]: ValueNode<FuncGraph> L-✓Dense.36, [3]: ValueNode<FuncGraph> L-✗Dense.37}
+#   7: @L-Dense.8:39{[0]: 38}
+#   8: @L-Dense.8:40{[0]: ValueNode<FuncGraph> L-↓Dense.9, [1]: 39}
+#   9: @L-Dense.8:41{[0]: ValueNode<Primitive> Depend, [1]: 40, [2]: 30}
+#  10: @L-Dense.8:[CNode]42{[0]: ValueNode<Primitive> Return, [1]: 41}
 
 
-# [No.5] Default.28
-# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:671/    def construct(self, logits, labels):/
-funcgraph fg_28(
-        %para55 : Tensor(F32)[16, 10]    # фlogits
-        , %para56 : Tensor(I32)[16]    # labels
+# [No.5] L-↓Dense.9
+# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:466/        if len(x_shape) != 2:/
+funcgraph fg_9[fg_8](
+        %para15 : Tensor(F32)[16, 44944]    # фx
     ) {
-    %1 : NoneTypeNoShape = DoSignaturePrimitive::S-Prim-_check_is_tensor{prim_type=1}("logits", %para55, "SoftmaxCrossEntropyWithLogits")    #(StringNoShape, Tensor(F32)[16, 10], StringNoShape) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:672/        _check_is_tensor('logits', logits, self.cls_name)/#[CNode]50
-    %2 : NoneTypeNoShape = DoSignaturePrimitive::S-Prim-_check_is_tensor{prim_type=1}("labels", %para56, "SoftmaxCrossEntropyWithLogits")    #(StringNoShape, Tensor(I32)[16], StringNoShape) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:673/        _check_is_tensor('labels', labels, self.cls_name)/#[CNode]51
-    %3 : Tuple[NoneType*2]TupleShape(NoShape, NoShape) = Primitive::MakeTuple{prim_type=1}(%1, %2)    #(NoneTypeNoShape, NoneTypeNoShape) #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:53/        loss=loss_fn(output,label)/#[CNode]52
-    %4 : Tuple[NoneType*2]TupleShape(NoShape, NoShape) = Primitive::stop_gradient{prim_type=1}(%3)    #(Tuple[NoneType*2]TupleShape(NoShape, NoShape)) #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:53/        loss=loss_fn(output,label)/#[CNode]53
-    %5 : BoolNoShape = FuncGraph::fg_17(Bool(0))    #(BoolNoShape)    # fg_17=bool_.17 #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/#[CNode]54
-    %6 : FuncNoShape = Primitive::Switch{prim_type=1}(%5, FuncGraph::fg_55, FuncGraph::fg_29)    #(BoolNoShape, FuncNoShape, FuncNoShape)    # fg_55=✓Default.55, fg_29=✗Default.29 #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/#[CNode]56
+    %1 : BoolNoShape = FuncGraph::fg_34(Bool(1))    #(BoolNoShape)    # fg_34=L-bool_.34 #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:469/        if self.has_bias:/#43
+    %2 : FuncNoShape = Primitive::Switch{prim_type=1}(%1, FuncGraph::fg_10, FuncGraph::fg_44)    #(BoolNoShape, FuncNoShape, FuncNoShape)    # fg_10=L-✓↓Dense.10, fg_44=L-✗↓Dense.44 #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:469/        if self.has_bias:/#45
 
 #------------------------> 4
-    %7 = %6() #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/#[CNode]57
-    %8 = Primitive::Depend{prim_type=1}[side_effect_propagate=I64(1)](%7, %4)    #(Undefined, Tuple[NoneType*2]TupleShape(NoShape, NoShape)) #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:53/        loss=loss_fn(output,label)/#[CNode]58
-    Primitive::Return{prim_type=1}(%8)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/#[CNode]59
+    %3 = %2() #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:469/        if self.has_bias:/#46
+    %4 = FuncGraph::fg_47(%3)    #(Undefined)    # fg_47=L-↓↓Dense.47 #scope: Default
+      # In file /home/pyt/PycharmProjects/pythonProject/net2.py:42/        x = self.fc3 (x)/#48
+    Primitive::Return{prim_type=1}(%4)    #(Undefined) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:469/        if self.has_bias:/#49
 }
 # order:
-#   1: @Default.28:[CNode]50{[0]: ValueNode<DoSignaturePrimitive> S-Prim-_check_is_tensor, [1]: ValueNode<StringImm> logits, [2]: фlogits, [3]: ValueNode<StringImm> SoftmaxCrossEntropyWithLogits}
-#   2: @Default.28:[CNode]51{[0]: ValueNode<DoSignaturePrimitive> S-Prim-_check_is_tensor, [1]: ValueNode<StringImm> labels, [2]: labels, [3]: ValueNode<StringImm> SoftmaxCrossEntropyWithLogits}
-#   3: @Default.28:[CNode]54{[0]: ValueNode<FuncGraph> bool_.17, [1]: ValueNode<BoolImm> false}
-#   4: @Default.28:[CNode]56{[0]: ValueNode<Primitive> Switch, [1]: [CNode]54, [2]: ValueNode<FuncGraph> ✓Default.55, [3]: ValueNode<FuncGraph> ✗Default.29}
-#   5: @Default.28:[CNode]57{[0]: [CNode]56}
-#   6: @Default.28:[CNode]59{[0]: ValueNode<Primitive> Return, [1]: [CNode]58}
+#   1: @L-↓Dense.9:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-MatMul, [1]: фx, [2]: L-fc3.weight}
+#   2: @L-↓Dense.9:43{[0]: ValueNode<FuncGraph> L-bool_.34, [1]: ValueNode<BoolImm> true}
+#   3: @L-↓Dense.9:45{[0]: ValueNode<Primitive> Switch, [1]: 43, [2]: ValueNode<FuncGraph> L-✓↓Dense.10, [3]: ValueNode<FuncGraph> L-✗↓Dense.44}
+#   4: @L-↓Dense.9:46{[0]: 45}
+#   5: @L-↓Dense.9:48{[0]: ValueNode<FuncGraph> L-↓↓Dense.47, [1]: 46}
+#   6: @L-↓Dense.9:49{[0]: ValueNode<Primitive> Return, [1]: 48}
 
 
-# [No.6] ✗Default.29
-# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/
-funcgraph fg_29[fg_28](
+# [No.6] L-✓↓Dense.10
+# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:469/        if self.has_bias:/
+funcgraph fg_10[fg_9](
 ) {
 
 #------------------------> 5
-    %1 = FuncGraph::fg_30(%para56)    #(Tensor(I32)[16])    # fg_30=↓Default.30 #scope: Default
-      # In file /home/pyt/PycharmProjects/pythonProject/train.py:53/        loss=loss_fn(output,label)/#[CNode]60
-    Primitive::Return{prim_type=1}(%1)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/#[CNode]61
+    %1 = $(L-↓Dense.9):DoSignaturePrimitive::S-Prim-MatMul{prim_type=1}[output_names=["output"], transpose_a=Bool(0), input_names=["x1", "x2"], transpose_x2=Bool(1), transpose_x1=Bool(0), transpose_b=Bool(1)](%para15, %para14)    #(Tensor(F32)[16, 44944], Ref[Tensor(F32)][120, 400]) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:468/        x = self.matmul(x, self.weight)/#x
+    %2 = DoSignaturePrimitive::S-Prim-BiasAdd{prim_type=1}[output_names=["output"], format="NCHW", input_names=["x", "b"]](%1, %para13)    #(Undefined, Ref[Tensor(F32)][120]) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:470/            x = self.bias_add(x, self.bias)/#x
+    Primitive::Return{prim_type=1}(%2)    #(Undefined) #scope: Default/fc3-Dense
+      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/layer/basic.py:469/        if self.has_bias:/#50
 }
 # order:
-#   1: @✗Default.29:[CNode]61{[0]: ValueNode<Primitive> Return, [1]: [CNode]60}
-#   2: @✗Default.29:[CNode]60{[0]: ValueNode<FuncGraph> ↓Default.30, [1]: labels}
-
-
-# [No.7] ↓Default.30
-# In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:674/        if self.sparse:/
-funcgraph fg_30[fg_28](
-        %para57 : Tensor(I32)[16]    # фlabels
-    ) {
-
-#------------------------> 6
-    %1 = DoSignaturePrimitive::S-Prim-SoftmaxCrossEntropyWithLogits{prim_type=1}(%para55, %para57)    #(Tensor(F32)[16, 10], Tensor(I32)[16]) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:679/        x = self.softmax_cross_entropy(logits, labels)[0]/#[CNode]62
-    %2 = DoSignaturePrimitive::S-Prim-getitem{prim_type=1}(%1, I64(0))    #(Undefined, Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:679/        x = self.softmax_cross_entropy(logits, labels)[0]/#x
-    %3 = FuncGraph::fg_63(%2)    #(Undefined)    # fg_63=get_loss.63 #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:680/        return self.get_loss(x)/#[CNode]64
-    Primitive::Return{prim_type=1}(%3)    #(Undefined) #scope: Default
-      # In file /home/pyt/miniconda3/envs/mindspore_py37/lib/python3.7/site-packages/mindspore/nn/loss/loss.py:680/        return self.get_loss(x)/#[CNode]65
-}
-# order:
-#   1: @↓Default.30:[CNode]62{[0]: ValueNode<DoSignaturePrimitive> S-Prim-SoftmaxCrossEntropyWithLogits, [1]: фlogits, [2]: фlabels}
-#   2: @↓Default.30:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-getitem, [1]: [CNode]62, [2]: ValueNode<Int64Imm> 0}
-#   3: @↓Default.30:[CNode]64{[0]: ValueNode<FuncGraph> get_loss.63, [1]: x}
-#   4: @↓Default.30:[CNode]65{[0]: ValueNode<Primitive> Return, [1]: [CNode]64}
+#   1: @L-✓↓Dense.10:x{[0]: ValueNode<DoSignaturePrimitive> S-Prim-BiasAdd, [1]: x, [2]: L-fc3.bias}
+#   2: @L-✓↓Dense.10:50{[0]: ValueNode<Primitive> Return, [1]: x}
 
 
 #===============================================================================
-# num of function graphs in stack: 7/8 (Ignored 1 internal frames).
+# num of function graphs in stack: 6/7 (Ignored 1 internal frames).
